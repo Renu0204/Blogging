@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['name'])){
     header('location:registration.php');
 }
+$name=$_SESSION['name'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +21,12 @@ if(!isset($_SESSION['name'])){
 <br>
 <br>
 
+
+ <a href="profile.php?id=<?php echo $name ?> "><button type="button" class="btn btn-warning">PROFILE</button></a>
    <a href="post.php"> <button type="button" class="btn btn-info">Click HERE TO CREATE YOUR BLOG</button></a>
    <br>
 <br>
 <br>
-
 
 <?php include 'footer.php';?>
 </body>
