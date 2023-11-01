@@ -6,12 +6,18 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="home.php">Home</a>
                 </li>
-                <li class="nav-item">
+                <?php
+                if(!isset($_SESSION['name'])&&!$_SESSION['name']){
+                    echo '<li class="nav-item">
                     <a class="nav-link" href="login.php">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/register.php">Register</a>
-                </li>
+                </li>';
+                }
+
+                ?>
+
             </ul>
 <?php
 if(isset($_SESSION['name'])&&$_SESSION['name']){
