@@ -14,11 +14,10 @@ $sql="SELECT p.banner,p.created_at AS Time,p.title,p.content FROM post p WHERE p
 $conn=mysqli_query($connection,$sql);
 while($row=mysqli_fetch_assoc($conn)){
     $banner=$row['banner'];
-$title=$row['title'];
-$content=$row['content'];
-$time=substr($row['Time'],0,10);     
+    $title=$row['title'];
+    $content=$row['content'];
+    $time=substr($row['Time'],0,10);     
 }
-
 $sql2="SELect Count(p.user_id) as total from post p  Where p.user_id='$id'";
 $query2=mysqli_query($connection,$sql2);
 while($row2=mysqli_fetch_assoc($query2)){
@@ -66,12 +65,16 @@ while($row2=mysqli_fetch_assoc($query2)){
               <p class="lead fw-normal mb-0">Recent Posts Title</p>
             </div>
     <?php
-    $sql2="SELECT p.Title from POST p WHere p.user_id='$id' ORDER BY p.created_at DESC LIMIT 5";
+    $sql2="SELECT p.Title,p.id from POST p WHere p.user_id='$id' ORDER BY p.created_at DESC LIMIT 5";
     $result2=mysqli_query($connection,$sql2);
     while($row2=mysqli_fetch_assoc($result2)){
       $Title=$row2['Title'];
+      $postid=$row2['id'];
     ?>
       <div class="card">
+        <div class="d-flex  justify-content-between">
+<div> <a href="delete.php?id=<?php echo $postid; ?>"><button type="button" class="btn btn-danger">Delete</button></a></div>      
+</div>
   <div class="card-body">
 <p><?php  echo $Title; ?></p>
   </div>

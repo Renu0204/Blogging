@@ -5,6 +5,7 @@ if(!isset($_SESSION['name'])){
     header('location:registration.php');
 }
 $name=$_SESSION['name'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
