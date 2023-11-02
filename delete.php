@@ -7,5 +7,5 @@ $loggedUsername=$_SESSION['username'];
 $userId=$connection->query("select id from user where username='$loggedUsername' limit 1")->fetch_assoc()['id'];
 $post = "delete from post where id = $id and user_id = $userId";
 $result=$conn->query($sql);
-header('location: $_server['HTTP_REFERER']');
+header('location: '. $_SERVER['HTTP_REFERER']);
 ?>
