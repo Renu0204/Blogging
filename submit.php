@@ -10,6 +10,9 @@ if (isset($_POST['type']) && $_POST["type"] === "login") {
 } elseif (isset($_POST['type']) && $_POST["type"] === "password-reset") {
     updatePassword();
 }
+elseif (isset($_POST['type']) && $_POST["type"] === "write-post") {
+    writePost();
+}
 elseif (isset($_GET['type']) && $_GET["type"] === "logout") {
     session_unset();
     header("location: login.php");
@@ -116,4 +119,38 @@ function updatePassword(): void
     var_dump($query);
     $result = $connection->query($query);
     header("location: login.php");
+}
+
+function writePost(){
+    $connection = new mysqli("localhost", "root", "", "blog");
+    $user=$_SESSION['name'];
+    $sql="SELECT `id` FROM `user` WHERE username='$user'";
+    $result=$connection->query($sql);
+
+    $row=mysqli_fetch_assoc($result);
+    $id=$row['id'];
+    if(isset($_POST['submit'])){
+        $folder="banner/";
+        $picture=$folder.basename($_FILES['picture']['name']);
+        $title=filter_var($_POST['title'],FILTER_SANITIZE_STRING);
+        $content=filter_var($_POST['content'],FILTER_SANITIZE_STRING);
+        if($_FILES['picture']['size']<5*1024*1024){
+            if(move_uploaded_file($_FILES['picture']['tmp_name'],$folder.basename($_FILES['picture']['name']))){
+                $sql="INSERT INTO `post`( `user_id`, `title`, `content`, `banner`) VALUES ('$id','$title','$content','$picture')";
+                $result=$connection->query($sql);
+                if($result){
+                    header('Location:home.php');
+                }else{
+                    $_SESSION['error'] = json_encode(["Invalid Credentials"]);
+                    header("location: post.php" );
+                }
+            }else{
+                $_SESSION['error'] = json_encode(["File NOt Moved"]);
+                header("location: post.php");
+            }
+        }else{
+            $_SESSION['error'] = json_encode(["File Size greater Than 5mb"]);
+            header("location: post.php");
+        }
+    }
 }
