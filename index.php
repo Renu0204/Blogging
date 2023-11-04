@@ -1,9 +1,6 @@
 <?php
 
-session_start();
-if(!isset($_SESSION['name'])){
-    header('location:registration.php');
-}
+require_once('middleware/auth.php') ;
 $name=$_SESSION['name'];
 
 ?>
@@ -23,7 +20,7 @@ $name=$_SESSION['name'];
 <br>
 
 
- <a href="profile.php?id=<?php echo $name ?> "><button type="button" class="btn btn-warning">PROFILE</button></a>
+ <a href="mypages.php?id=<?php echo $name ?> "><button type="button" class="btn btn-warning">PROFILE</button></a>
    <a href="post.php"> <button type="button" class="btn btn-info">Click HERE TO CREATE YOUR BLOG</button></a>
    <br>
 <br>

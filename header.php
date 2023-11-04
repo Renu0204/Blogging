@@ -2,23 +2,23 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="home.php">Home</a>
-                </li>
-                <?php
-                if(!isset($_SESSION['name'])&&!$_SESSION['name']){
-                    echo '<li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/register.php">Register</a>
-                </li>';
-                }
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+        <a class="nav-link active" href="home.php">Home</a>
+    </li>
+    <?php
+    // Check if the user is not logged in (use !isset and !empty to check if 'name' is not set or empty)
+    if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
+        echo '<li class="nav-item">
+            <a class="nav-link" href="login.php">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="register.php">Register</a>
+        </li>';
+    }
+    ?>
+</ul>
 
-                ?>
-
-            </ul>
 <?php
 if(isset($_SESSION['name'])&&$_SESSION['name']){
     $name=$_SESSION['name'];

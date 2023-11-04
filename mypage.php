@@ -1,4 +1,5 @@
 <?php
+require_once("middleware/auth.php");
 $connection = new mysqli("localhost", "root", "", "blog");
 $username = $_GET['id'];
 $result = $connection->query("select * from user where username='$username'");
@@ -6,11 +7,11 @@ $user = $result->fetch_assoc();
 $userId = $user['id'];
 $latestPost = "SELECT banner,created_at AS Time,title,content FROM post WHERE user_id='$userId' ORDER BY created_at DESC limit 1";
 $result = $connection->query($latestPost);
-$blog = $result->fetch_assoc(); // Array
+$blog = $result->fetch_assoc(); 
 $totalPostCount = $connection
     ->query("SeLect count(user_id) as total from post Where user_id='$userId'")
-    ->fetch_assoc()['total']; // Array Associative array , ['name' => 'rahul'
-    $recent=$connection->query("SELECT title FROM post WHERE user_id='$userId' ORDER BY created_at DESC limit 5");
+    ->fetch_assoc()['total']; 
+    $recent=$connection->query("SELECT id,title FROM post WHERE user_id='$userId' ORDER BY created_at DESC limit 5");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,22 +46,31 @@ $totalPostCount = $connection
                         <img src="<?php echo $blog['banner']; ?>" class="card-img-top" style="height:50vh;" alt="CJB">
                         <?php
                         echo '<div class="card-body">';
+                       
                         echo '<h5 class="card-title">' . $blog['title'] . '</h5>';
                         echo '  <p class="card-text">' . substr($blog['content'], 0, 50) . '</p>';
                         echo '</div>'; ?>
                     </div>
+                
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <p class="lead fw-normal mb-0">Recent Posts Title</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                        <?php
-    while($row=$recent->fetch_assoc()){
-                      
-                     echo ' <p>'. $row["title"] .'</p>';
-                 } ?>
-                        </div>
-                    </div>
+    <p class="lead fw-normal mb-0">Recent Posts Title</p>
+</div>
+<?php
+while ($row = $recent->fetch_assoc()) {
+    echo '<div class="card w-95">';
+    echo '<div class="card-body">';
+    echo '<h5 class="card-title">' . $row["title"] . '</h5>';
+    echo '<div class="d-flex justify-content-between">';
+    echo '<a href="delete.php?id=' . $row["id"] . '" class="btn btn-danger">Delete</a>';
+    echo '<a href="#" class="btn btn-success">Edit</a>';
+    echo  '</div>';
+    echo '</div>';
+    echo '</div>';
+}
+?>
+
+    
+                    
                 </div>
             </div>
         </div>
