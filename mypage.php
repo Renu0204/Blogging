@@ -33,10 +33,11 @@ $totalPostCount = $connection
                                  alt="Profile Image" class="img-fluid img-thumbnail mt-4 mb-2"
                                  style="width: 150px;height:100px; z-index: 1">
                         </div>
-                        <div class="ms-3" style="margin-top: 80px;">
-                            <h5><?php echo $user['username']; ?></h5>
+                        <div class="ms-3 d-flex" style="margin-top: 80px;">
+<div> <h5><?php echo $user['username']; ?></h5>
                             <h5>Total Post :- <?php echo $totalPostCount ?></h5>
-                            <h5>Last Post :- <?php echo $blog['Time'] ?></h5>
+                            <h5>Last Post :- <?php echo $blog['Time'] ?></h5></div>
+                           <div><a href="updateprofile.php?id=<?php echo $username; ?>" class="btn btn-primary">Update Profile</a></div>
                         </div>
                     </div>
                 </div>
@@ -67,10 +68,7 @@ while ($row = $recent->fetch_assoc()) {
     echo '</div>';
     echo '</div>';
 }
-?>
-
-    
-                    
+?>                    
                 </div>
             </div>
         </div>

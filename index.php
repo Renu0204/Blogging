@@ -1,5 +1,4 @@
 <?php
-
 require_once('middleware/auth.php') ;
 $name=$_SESSION['name'];
 
@@ -13,19 +12,15 @@ $name=$_SESSION['name'];
     <title>Document</title>
 </head>
 <body>
-
     <?php include 'header.php'; ?>
 <br>
 <br>
 <br>
-
-
- <a href="mypages.php?id=<?php echo $name ?> "><button type="button" class="btn btn-warning">PROFILE</button></a>
+ <a href="mypage.php?id=<?php echo $name ?> "><button type="button" class="btn btn-warning">PROFILE</button></a>
    <a href="post.php"> <button type="button" class="btn btn-info">Click HERE TO CREATE YOUR BLOG</button></a>
    <br>
 <br>
 <br>
-
 <?php include 'footer.php';?>
 </body>
 </html>

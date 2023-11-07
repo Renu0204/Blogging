@@ -17,7 +17,6 @@ elseif (isset($_GET['type']) && $_GET["type"] === "logout") {
     session_unset();
     header("location: login.php");
 }
-
 function register(): void
 {
     global $connection;
