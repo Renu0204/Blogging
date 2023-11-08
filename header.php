@@ -14,9 +14,21 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="register.php">Register</a>
-        </li>';
+        </li>
+        
+        ';
+    }else{
+        echo ' <li class="nav-item">
+        <form action="" method="post">
+            <div class="d-flex">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="username" aria-label="Search" required>
+ <button type="submit" name="search" class="btn btn-danger">Search</button></div></form>
+
+            </li>
+            ';
     }
     ?>
+   
 </ul>
 
 <?php
@@ -30,3 +42,17 @@ if(isset($_SESSION['name'])&&$_SESSION['name']){
         </div>
     </div>
 </nav>
+<?php
+
+
+if(isset($_POST['search'])){
+    $name = $_POST['username'];
+    header("location:search.php?name=" . urlencode($name));
+    exit();
+}
+
+
+
+
+
+?>

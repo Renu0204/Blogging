@@ -12,6 +12,7 @@ $totalPostCount = $connection
     ->query("SeLect count(user_id) as total from post Where user_id='$userId'")
     ->fetch_assoc()['total']; 
     $recent=$connection->query("SELECT id,title FROM post WHERE user_id='$userId' ORDER BY created_at DESC limit 5");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,13 +63,16 @@ while ($row = $recent->fetch_assoc()) {
     echo '<div class="card-body">';
     echo '<h5 class="card-title">' . $row["title"] . '</h5>';
     echo '<div class="d-flex justify-content-between">';
+    echo '<a href="edit.php?id=' . $row["id"] . '" class="btn btn-success">Edit</a>';
     echo '<a href="delete.php?id=' . $row["id"] . '" class="btn btn-danger">Delete</a>';
-    echo '<a href="#" class="btn btn-success">Edit</a>';
+    echo '<a href="blog.php?id=' . $row['id'] . '" class="btn btn-primary">Read More</a>';
+
     echo  '</div>';
     echo '</div>';
     echo '</div>';
 }
-?>                    
+?>        
+          
                 </div>
             </div>
         </div>
