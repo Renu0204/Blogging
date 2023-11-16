@@ -1,26 +1,21 @@
 <?php
-require_once('middleware/auth.php') ;
-$name=$_SESSION['name'];
+session_start();
+$connection = new mysqli("127.0.0.1", "root", "", "blog");
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
-    <?php include 'header.php'; ?>
-<br>
-<br>
-<br>
- <a href="mypage.php?id=<?php echo $name ?> "><button type="button" class="btn btn-warning">PROFILE</button></a>
-   <a href="post.php"> <button type="button" class="btn btn-info">Click HERE TO CREATE YOUR BLOG</button></a>
-   <br>
-<br>
-<br>
-<?php include 'footer.php';?>
-</body>
-</html>
+# Framework
+
+try{
+    $route = $_GET['route'] ?? "homepage";
+
+    $requiredFileName= "pages/".$route .".php"; // pages/login.php, pages/blog.php
+
+    if(!file_exists($requiredFileName)){
+        die("<h1>Requested Route Not Found Here</h1>");
+
+    }
+
+    require_once $requiredFileName;
+}catch (Exception $e){
+    // $e
+
+}

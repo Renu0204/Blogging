@@ -60,7 +60,7 @@ if(isset($_POST["submit"]))
     $sql="UPDATE `user` SET `username`='$username',`email`='$email' WHERE username='$name' AND id='$userid'";
     $result=$connection->query($sql);
     if($result){
-        header("Location:mypage.php?id=$username");
+        header("Location:?route=mypage?id=$username");
     }else{
         $error="Fail To update";
         $_SESSION["error"] = json_encode($error);

@@ -10,10 +10,10 @@
     // Check if the user is not logged in (use !isset and !empty to check if 'name' is not set or empty)
     if (!isset($_SESSION['name']) || empty($_SESSION['name'])) {
         echo '<li class="nav-item">
-            <a class="nav-link" href="login.php">Login</a>
+            <a class="nav-link" href="?route=login">Login</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="register.php">Register</a>
+            <a class="nav-link" href="?route=register">Register</a>
         </li>
         
         ';
@@ -47,7 +47,7 @@ if(isset($_SESSION['name'])&&$_SESSION['name']){
 
 if(isset($_POST['search'])){
     $name = $_POST['username'];
-    header("location:search.php?name=" . urlencode($name));
+    header("location:?route=search?name=" . urlencode($name));
     exit();
 }
 

@@ -29,7 +29,7 @@ while ($rows=mysqli_fetch_assoc($result)) {
 	echo "<tr>";
 echo "<td>".$rows['id']."</td>";
 echo "<td>".$rows['title']."</td>";
-echo "<td>".substr($rows['content'],0,50)."......."."<a href='blog.php?id=$rows[id] ' class
+echo "<td>".substr($rows['content'],0,50)."......."."<a href='?route=blog?id=$rows[id] ' class
 ='btn btn-danger'>READ MORE</a>"."</td>";
 echo "<td><img src='".$rows['banner']."' alt='Image' height='100px' width='150px' borderradius='5px'></td>";
 echo "<td>".$rows['created_at']."</td>";

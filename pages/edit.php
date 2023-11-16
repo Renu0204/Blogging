@@ -1,6 +1,6 @@
 <?php 
 $connection = new mysqli("localhost", "root", "", "blog");
-require_once 'middleware/auth.php';
+
 
 $id = $_GET['id'];
 $name = $_SESSION['name'];
@@ -14,9 +14,7 @@ $uid = $resultuid['uid'];
 if (isset($_POST['submit'])) {
     $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
     $content = filter_var($_POST['content'], FILTER_SANITIZE_STRING);
-  
     $update = "UPDATE `post` SET `title`='$title', `content`='$content' WHERE id=$id AND user_id=$uid";
-
     $res = $connection->query($update);
     if ($res) {
         header('location: '. $_SERVER['HTTP_REFERER']);

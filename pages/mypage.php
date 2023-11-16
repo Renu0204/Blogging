@@ -1,5 +1,5 @@
 <?php
-require_once("middleware/auth.php");
+
 $connection = new mysqli("localhost", "root", "", "blog");
 $username = $_GET['id'];
 $result = $connection->query("select * from user where username='$username'");
@@ -13,7 +13,7 @@ $totalPostCount = $connection
     ->fetch_assoc()['total']; 
     $recent=$connection->query("SELECT id,title FROM post WHERE user_id='$userId' ORDER BY created_at DESC limit 5");
     
-?>
+?>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +38,7 @@ $totalPostCount = $connection
 <div> <h5><?php echo $user['username']; ?></h5>
                             <h5>Total Post :- <?php echo $totalPostCount ?></h5>
                             <h5>Last Post :- <?php echo $blog['Time'] ?></h5></div>
-                           <div><a href="updateprofile.php?id=<?php echo $username; ?>" class="btn btn-primary">Update Profile</a></div>
+                           <div><a href="?route=updateprofile?id=<?php echo $username; ?>" class="btn btn-primary">Update Profile</a></div>
                         </div>
                     </div>
                 </div>
@@ -63,9 +63,9 @@ while ($row = $recent->fetch_assoc()) {
     echo '<div class="card-body">';
     echo '<h5 class="card-title">' . $row["title"] . '</h5>';
     echo '<div class="d-flex justify-content-between">';
-    echo '<a href="edit.php?id=' . $row["id"] . '" class="btn btn-success">Edit</a>';
-    echo '<a href="delete.php?id=' . $row["id"] . '" class="btn btn-danger">Delete</a>';
-    echo '<a href="blog.php?id=' . $row['id'] . '" class="btn btn-primary">Read More</a>';
+    echo '<a href="?route=edit?id=' . $row["id"] . '" class="btn btn-success">Edit</a>';
+    echo '<a href="?route=delete?id=' . $row["id"] . '" class="btn btn-danger">Delete</a>';
+    echo '<a href="?route=blog?id=' . $row['id'] . '" class="btn btn-primary">Read More</a>';
 
     echo  '</div>';
     echo '</div>';

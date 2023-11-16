@@ -42,7 +42,7 @@ $name=$row['username'];
             <h5 class="card-title"><?php echo $title;?></h5>
             <p class="card-text"><?php echo $content;?></p>
             <p class="card-text">Author :   <?php echo $name?></p>
-            <a href="home.php" class="btn btn-primary">GoBack</a>
+            <a href="?route=home" class="btn btn-primary">GoBack</a>
         </div>
     </div>
 </div>

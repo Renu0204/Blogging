@@ -19,7 +19,6 @@ if(isset($_GET['token'])){
 }
 ?>
 
-
 <!doctype html>
 <html lang="en">
 <head>

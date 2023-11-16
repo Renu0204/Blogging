@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ?>
 
 <!doctype html>
@@ -21,7 +21,7 @@ session_start();
                 <div class="card-header">Login</div>
                 <div class="card-body">
                     <?php include "error.php"?>
-                    <form method="post" action="submit.php">
+                    <form method="post" action="pages/submit.php">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username">

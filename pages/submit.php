@@ -15,7 +15,7 @@ elseif (isset($_POST['type']) && $_POST["type"] === "write-post") {
 }
 elseif (isset($_GET['type']) && $_GET["type"] === "logout") {
     session_unset();
-    header("location: login.php");
+    header("location:?route=login");
 }
 function register(): void
 {
@@ -41,7 +41,7 @@ function register(): void
             $sql = "insert into user(username,email,password) values('$username','$email','$hashed')";
             $result = $connection->query($sql);
             if ($result) {
-                header("Location: login.php");
+                header("Location:?route=login");
             } else {
                 $error[] = "unable to create your account ";
                 $_SESSION['error'] = json_encode($error);
@@ -80,7 +80,7 @@ function login(): void
     $result = $connection->query($query);
     if ($result->num_rows > 0) {
         $_SESSION['name'] = $username;
-        header("location: index.php");
+        header("location:?route=homepage");
     } else {
         $_SESSION['error'] = json_encode(["Invalid Credentials"]);
         header("location: " . $_SERVER['HTTP_REFERER']);
@@ -117,7 +117,7 @@ function updatePassword(): void
     $query = "UPDATE user SET password='$password' WHERE email='$email'";
     var_dump($query);
     $result = $connection->query($query);
-    header("location: login.php");
+    header("location:login.php");
 }
 
 function writePost(){
@@ -138,18 +138,18 @@ function writePost(){
                 $sql="INSERT INTO `post`( `user_id`, `title`, `content`, `banner`) VALUES ('$id','$title','$content','$picture')";
                 $result=$connection->query($sql);
                 if($result){
-                    header('Location:home.php');
+                    header('Location:?route=home');
                 }else{
                     $_SESSION['error'] = json_encode(["Invalid Credentials"]);
-                    header("location: post.php" );
+                    header("location:?route=post" );
                 }
             }else{
                 $_SESSION['error'] = json_encode(["File NOt Moved"]);
-                header("location: post.php");
+                header("location:?route=post");
             }
         }else{
             $_SESSION['error'] = json_encode(["File Size greater Than 5mb"]);
-            header("location: post.php");
+            header("location:?route=post");
         }
     }
 }
