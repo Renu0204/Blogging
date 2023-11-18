@@ -4,7 +4,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
     <li class="nav-item">
-        <a class="nav-link active" href="home.php">Home</a>
+        <a class="nav-link active" href="?route=home">Home</a>
     </li>
     <?php
     // Check if the user is not logged in (use !isset and !empty to check if 'name' is not set or empty)
@@ -35,7 +35,7 @@
 if(isset($_SESSION['name'])&&$_SESSION['name']){
     $name=$_SESSION['name'];
     echo "<button type='button' class='btn btn-success'>$name</button>";
-    echo "<div><a href='submit.php?type=logout' class='btn btn-danger'>Logout</a></div>";
+    echo "<div><a href='?route=submit&type=logout' class='btn btn-danger'>Logout</a></div>";
 }
 
 ?>
@@ -47,7 +47,7 @@ if(isset($_SESSION['name'])&&$_SESSION['name']){
 
 if(isset($_POST['search'])){
     $name = $_POST['username'];
-    header("location:?route=search?name=" . urlencode($name));
+    header("location:?route=search&name=" . urlencode($name));
     exit();
 }
 

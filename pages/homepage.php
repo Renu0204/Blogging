@@ -16,7 +16,7 @@ $name=$_SESSION['name'];
 <br>
 <br>
 <br>
- <a href="?route=?mypage?id=<?php echo $name ?> "><button type="button" class="btn btn-warning">PROFILE</button></a>
+ <a href="?route=mypage&id=<?php echo $name ?> "><button type="button" class="btn btn-warning">PROFILE</button></a>
    <a href="?route=post"> <button type="button" class="btn btn-info">Click HERE TO CREATE YOUR BLOG</button></a>
    <br>
 <br>

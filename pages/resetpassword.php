@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,7 +18,7 @@ session_start();
                 <div class="card-header">Login</div>
                 <div class="card-body">
                     <?php include 'error.php'; ?>
-                    <form method="post" action="submit.php">
+                    <form method="post" action="?route=submit">
                         <div class="form-group">
                             <label for="username">Email</label>
                             <input type="email" name="email" class="form-control" id="username" placeholder="Enter your Email">

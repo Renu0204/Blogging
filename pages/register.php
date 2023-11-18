@@ -18,7 +18,7 @@
                 <div class="card-header">Signup</div>
                 <div class="card-body">
                     <?php include "error.php"; ?>
-                    <form method="post" action="submit.php">
+                    <form method="post" action="?route=submit">
                         <div class="form-group mt-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username" required>

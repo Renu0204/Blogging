@@ -5,7 +5,7 @@ $connection = new mysqli("127.0.0.1", "root", "", "blog");
 # Framework
 
 try{
-    $route = $_GET['route'] ?? "homepage";
+    $route = $_GET['route'] ?? "login";
 
     $requiredFileName= "pages/".$route .".php"; // pages/login.php, pages/blog.php
 

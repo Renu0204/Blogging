@@ -1,6 +1,5 @@
 <?php
 $connection = new mysqli("localhost", "root", "", "blog");
-require_once'middleware/auth.php';
 $name=$_GET['id'];
 $sql=$connection->query("SELECT * FROM user WHERE username='$name'");
 $result=$sql->fetch_assoc();

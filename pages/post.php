@@ -1,9 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION['name'])) {
-    header('location:registration.php');
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +13,7 @@ if (!isset($_SESSION['name'])) {
     <div class="row justify-content-center">
         <div class="col-md-4">
             <?php include 'error.php'; ?>
-            <form action="submit.php" method="POST" enctype="multipart/form-data">
+            <form action="?route=submit" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="picture">Profile Picture</label>
                     <input type="file" class="form-control" accept="image/*" id="picture" name="picture" required>

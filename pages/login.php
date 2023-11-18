@@ -21,7 +21,7 @@
                 <div class="card-header">Login</div>
                 <div class="card-body">
                     <?php include "error.php"?>
-                    <form method="post" action="pages/submit.php">
+                    <form method="post" action="?route=submit">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username">
@@ -32,7 +32,7 @@
                         </div>
                         <input type="text" value="login" name="type" hidden>
                         <div class="form-group mt-3">
-                            <p>Forget Password<a href="resetpassword.php">Click Here</p>
+                            <p>Forget Password<a href="?route=resetpassword">Click Here</p>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 mt-5">Login</button>
                     </form>

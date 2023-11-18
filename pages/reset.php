@@ -40,7 +40,7 @@ if(isset($_GET['token'])){
                 <div class="card-header">Reset</div>
                 <div class="card-body">
                     <?php include 'error.php'; ?>
-                    <form method="post" action="submit.php">
+                    <form method="post" action="?route=submit">
                         <div class="form-group">
                             <label for="username">Password</label>
                             <input type="password" name="username" class="form-control" id="username" placeholder="Enter your username">
